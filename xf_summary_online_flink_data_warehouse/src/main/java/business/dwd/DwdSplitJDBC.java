@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * @DATA 2021/9/12 1:33
  * @Version 1.0
  */
-public class CashReserveSplitJDBC extends FlinkAbstractBase {
+public class DwdSplitJDBC extends FlinkAbstractBase {
 
 
     @Override
