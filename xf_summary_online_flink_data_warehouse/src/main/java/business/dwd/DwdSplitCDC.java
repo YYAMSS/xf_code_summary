@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * @DATA 2021/9/17 0:55
  * @Version 1.0
  */
-public class CashReserveSplitCDC extends FlinkAbstractBase {
+public class DwdSplitCDC extends FlinkAbstractBase {
 
     @Override
     protected void transformation() throws Exception {
