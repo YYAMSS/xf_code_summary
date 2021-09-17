@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Maven 1" modules="online">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="H:\AGG\Code_Summary\xf_code_summary\xf_summary_online_flink_data_warehouse\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+  </component>
+</project>

@@ -1,0 +1,41 @@
+package context;
+
+import org.apache.flink.runtime.io.disk.iomanager.FileIOChannel;
+
+/**
+ * @Author xiefeng
+ * @DATA 2021/9/12 15:51
+ * @Version 1.0
+ */
+public class GlobalContext {
+
+    //kafka相关
+    public static final String BOOTSTRAP_SERVERS = "bootstrap.servers";
+    public static final String GROUP_ID = "group.id";
+    public static final String AUTO_OFFSET_RESET = "auto.offset.reset";
+
+    public static final String KAFKA_BOOTSTRAP_SERVERS = "hadoop102:9092,hadoop103:9092,hadoop104:9092";
+    public static final String KAFKA_GROUP_ID = "kafka_group_id";
+    public static final String KAFKA_TOPIC = "kafka_topic";
+    public static final String KAFKA_OFFSET = "kafka_offset";
+    public static final String KAFKA_DEFAULT_TOPIC = "kafka_default_topic";
+    public static final String KAFKA_TOPIC_ODS = "kafka_topic_ods";
+
+    //Mysql相关
+    public static final String MYSQL_DBURL = "jdbc:mysql://192.168.40.102:3306/test?characterEncoding=utf-8&useSSL=false";
+    public static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
+    public static final String MYSQL_USER = "root";
+    public static final String MYSQL_PWD = "123456";
+
+    //HBase相关
+    //Phoenix库名
+    public static final String HBASE_SCHEMA = "XXFF_TEST_2021";
+    //Phoenix驱动
+    public static final String PHOENIX_DRIVER = "org.apache.phoenix.jdbc.PhoenixDriver";
+    //Phoenix连接参数
+    public static final String PHOENIX_SERVER = "jdbc:phoenix:hadoop102,hadoop103,hadoop104:2181";
+
+
+
+
+}
