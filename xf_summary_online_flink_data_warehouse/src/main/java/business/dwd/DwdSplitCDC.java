@@ -56,6 +56,7 @@ public class DwdSplitCDC extends FlinkAbstractBase {
         dataDS.print("dataDS<<<<<<");
 
 
+        //添加配置表流
         DebeziumSourceFunction<String> sourceFunction = MySQLSource.<String>builder()
                 .hostname("hadoop102")
                 .port(3306)
