@@ -20,6 +20,7 @@ public class GlobalContext {
     public static final String KAFKA_TOPIC_ODS = "kafka_topic_ods";
     public static final String DWD_ORDER_INFO = "dwd_order_info";
     public static final String DWD_ORDER_DETAIL = "dwd_order_detail";
+    public static final String DWM_ORDER_WIDE = "dwm_order_wide";
 
 
     //Mysql相关
