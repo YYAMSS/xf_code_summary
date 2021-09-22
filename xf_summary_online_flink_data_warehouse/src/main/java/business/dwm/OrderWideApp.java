@@ -121,8 +121,88 @@ public class OrderWideApp extends FlinkAbstractBase {
                     }
                 }, 100, TimeUnit.SECONDS);
 
+        //关联地区维度
+        SingleOutputStreamOperator orderWideWithProvinceDS = AsyncDataStream.unorderedWait(orderWideWithUserDS, new DimAsyncFunction<OrderWide>("DIM_BASE_PROVINCE") {
+            @Override
+            public String getId(OrderWide input) {
+                return input.getProvince_id().toString();
+            }
 
+            @Override
+            public void join(OrderWide input, JSONObject dimInfo) {
 
+                String name = dimInfo.getString("NAME");
+                String area_code = dimInfo.getString("AREA_CODE");
+                String iso_code = dimInfo.getString("ISO_CODE");
+                String iso_3166_2 = dimInfo.getString("ISO_3166_2");
+
+                input.setProvince_name(name);
+                input.setProvince_area_code(area_code);
+                input.setProvince_iso_code(iso_code);
+                input.setProvince_3166_2_code(iso_3166_2);
+
+            }
+        }, 100, TimeUnit.SECONDS);
+
+        //关联SKU维度
+        SingleOutputStreamOperator orderWideWithSkuDS = AsyncDataStream.unorderedWait(orderWideWithProvinceDS, new DimAsyncFunction<OrderWide>("DIM_SKU_INFO") {
+            @Override
+            public String getId(OrderWide input) {
+                return String.valueOf(input.getSku_id());
+            }
+
+            @Override
+            public void join(OrderWide input, JSONObject dimInfo) {
+                input.setSku_name(dimInfo.getString("SKU_NAME"));
+                input.setCategory3_id(dimInfo.getLong("CATEGORY3_ID"));
+                input.setSpu_id(dimInfo.getLong("SPU_ID"));
+                input.setTm_id(dimInfo.getLong("TM_ID"));
+            }
+        }, 60, TimeUnit.SECONDS);
+
+        //关联SPU
+        SingleOutputStreamOperator orderWideWithSpuDS = AsyncDataStream.unorderedWait(orderWideWithSkuDS, new DimAsyncFunction<OrderWide>("DIM_SPU_INFO") {
+            @Override
+            public String getId(OrderWide input) {
+                return input.getSpu_id().toString();
+            }
+            @Override
+            public void join(OrderWide input, JSONObject dimInfo) {
+                input.setSpu_name(dimInfo.getString("SPU_NAME"));
+            }
+        }, 60, TimeUnit.SECONDS);
+
+        //TODO 关联TradeMark维度
+        SingleOutputStreamOperator orderWideWithTmDS = AsyncDataStream.unorderedWait(orderWideWithSpuDS, new DimAsyncFunction<OrderWide>("DIM_BASE_TRADEMARK") {
+            @Override
+            public String getId(OrderWide input) {
+                return input.getTm_id().toString();
+            }
+
+            @Override
+            public void join(OrderWide input, JSONObject dimInfo) {
+                input.setTm_name(dimInfo.getString("TM_NAME"));
+            }
+        }, 60, TimeUnit.SECONDS);
+
+        //TODO 关联Category维度
+        SingleOutputStreamOperator orderWideWithCategory3DS = AsyncDataStream.unorderedWait(orderWideWithTmDS, new DimAsyncFunction<OrderWide>("DIM_BASE_CATEGORY3") {
+            @Override
+            public String getId(OrderWide input) {
+                return input.getCategory3_id().toString();
+            }
+
+            @Override
+            public void join(OrderWide input, JSONObject dimInfo) {
+
+                input.setCategory3_name(dimInfo.getString("NAME"));
+            }
+        }, 60, TimeUnit.SECONDS);
+
+        //orderWideWithCategory3DS.map(JSONObject::toJSONString).print();
+
+        orderWideWithCategory3DS.map(JSONObject::toJSONString)
+                .addSink(MyKafkaUtil.getFlinkKafkaProducer(GlobalContext.DWM_ORDER_WIDE));
 
     }
 }
