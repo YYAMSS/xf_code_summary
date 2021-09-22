@@ -21,6 +21,8 @@ public class GlobalContext {
     public static final String DWD_ORDER_INFO = "dwd_order_info";
     public static final String DWD_ORDER_DETAIL = "dwd_order_detail";
     public static final String DWM_ORDER_WIDE = "dwm_order_wide";
+    public static final String DWD_PAYMENT_INFO = "dwd_payment_info";
+    public static final String DWM_PAYMENT_WIDE = "dwm_payment_wide";
 
 
     //Mysql相关
