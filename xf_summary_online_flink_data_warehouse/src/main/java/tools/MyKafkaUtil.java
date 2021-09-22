@@ -44,6 +44,13 @@ public class MyKafkaUtil {
                 kafkaSerializationSchema,
                 properties,
                 FlinkKafkaProducer.Semantic.EXACTLY_ONCE);
+    }
+
+
+    public static FlinkKafkaConsumer<String> getFlinkKafkaConsumer(String topic, String groupId) {
+        properties.setProperty(GlobalContext.KAFKA_GROUP_ID,groupId);
+
+        return new FlinkKafkaConsumer<String>(topic,new SimpleStringSchema(),properties);
 
     }
 }
