@@ -1,9 +1,7 @@
 package tools;
 
-import com.alibaba.fastjson.JSONObject;
 import context.GlobalContext;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
-import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 import org.apache.flink.streaming.connectors.kafka.KafkaSerializationSchema;
@@ -19,7 +17,7 @@ import java.util.Properties;
 public class MyKafkaUtil {
     private static Properties properties = new Properties();
     static{
-        properties.put(GlobalContext.BOOTSTRAP_SERVERS,GlobalContext.KAFKA_BOOTSTRAP_SERVERS);
+        properties.put(GlobalContext.BOOTSTRAP_SERVERS, GlobalContext.KAFKA_BOOTSTRAP_SERVERS);
     }
 
     public static FlinkKafkaConsumer<String> getKafkaSource(String topic,String groupId,String offset){

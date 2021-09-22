@@ -2,7 +2,6 @@ package tools;
 
 import bean.TableProcess;
 import com.google.common.base.CaseFormat;
-import context.GlobalContext;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.sql.*;

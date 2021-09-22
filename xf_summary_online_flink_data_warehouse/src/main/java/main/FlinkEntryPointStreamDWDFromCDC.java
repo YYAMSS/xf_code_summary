@@ -1,6 +1,6 @@
 package main;
 
-import business.dwd.CashReserveSplitCDC;
+import business.dwd.DwdSplitCDC;
 
 /**
  * @Author xiefeng
@@ -12,7 +12,7 @@ public class FlinkEntryPointStreamDWDFromCDC {
 
         System.out.println("--------------Flink application start!---------");
         try {
-            new CashReserveSplitCDC().apply();
+            new DwdSplitCDC().apply();
         } catch (Exception e) {
             e.printStackTrace();
         }

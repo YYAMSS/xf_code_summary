@@ -1,7 +1,5 @@
 package context;
 
-import org.apache.flink.runtime.io.disk.iomanager.FileIOChannel;
-
 /**
  * @Author xiefeng
  * @DATA 2021/9/12 15:51
@@ -20,6 +18,9 @@ public class GlobalContext {
     public static final String KAFKA_OFFSET = "kafka_offset";
     public static final String KAFKA_DEFAULT_TOPIC = "kafka_default_topic";
     public static final String KAFKA_TOPIC_ODS = "kafka_topic_ods";
+    public static final String DWD_ORDER_INFO = "dwd_order_info";
+    public static final String DWD_ORDER_DETAIL = "dwd_order_detail";
+
 
     //Mysql相关
     public static final String MYSQL_DBURL = "jdbc:mysql://192.168.40.102:3306/test?characterEncoding=utf-8&useSSL=false";
@@ -34,8 +35,6 @@ public class GlobalContext {
     public static final String PHOENIX_DRIVER = "org.apache.phoenix.jdbc.PhoenixDriver";
     //Phoenix连接参数
     public static final String PHOENIX_SERVER = "jdbc:phoenix:hadoop102,hadoop103,hadoop104:2181";
-
-
 
 
 }

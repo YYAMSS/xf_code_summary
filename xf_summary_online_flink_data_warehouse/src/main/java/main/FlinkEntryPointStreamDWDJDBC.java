@@ -1,5 +1,5 @@
 package main;
-import business.dwd.CashReserveSplitJDBC;
+import business.dwd.DwdSplitJDBC;
 
 /**
  * @Author xiefeng
@@ -11,7 +11,7 @@ public class FlinkEntryPointStreamDWDJDBC {
 
         try {
             System.out.println("--------------Flink application start!---------");
-            new CashReserveSplitJDBC().apply();
+            new DwdSplitJDBC().apply();
         } catch (Exception e) {
             e.printStackTrace();
         }

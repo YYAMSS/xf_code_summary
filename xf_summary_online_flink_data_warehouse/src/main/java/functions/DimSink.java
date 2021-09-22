@@ -2,7 +2,6 @@ package functions;
 
 import com.alibaba.fastjson.JSONObject;
 import context.GlobalContext;
-import kafka.utils.json.JsonObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;

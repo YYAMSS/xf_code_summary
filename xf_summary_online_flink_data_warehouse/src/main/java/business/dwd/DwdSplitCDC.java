@@ -14,7 +14,6 @@ import functions.TableProcessFunction;
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.state.MapStateDescriptor;
 import org.apache.flink.streaming.api.datastream.*;
-import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 import org.apache.flink.streaming.connectors.kafka.KafkaSerializationSchema;
