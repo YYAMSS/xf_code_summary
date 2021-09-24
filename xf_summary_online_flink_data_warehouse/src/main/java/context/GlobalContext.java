@@ -23,6 +23,12 @@ public class GlobalContext {
     public static final String DWM_ORDER_WIDE = "dwm_order_wide";
     public static final String DWD_PAYMENT_INFO = "dwd_payment_info";
     public static final String DWM_PAYMENT_WIDE = "dwm_payment_wide";
+    public static final String ODS_BASE_LOG = "ods_base_log";
+    public static final String DWD_PAGE_LOG = "dwd_page_log";
+    public static final String DWD_START_LOG = "dwd_start_log";
+    public static final String DWD_DISPLAY_LOG = "dwd_display_log";
+    public static final String DWD_DIRTY_LOG = "dwd_dirty_log";
+
 
 
     //Mysql相关
