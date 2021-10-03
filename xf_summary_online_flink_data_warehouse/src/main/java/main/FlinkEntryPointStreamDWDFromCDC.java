@@ -1,6 +1,6 @@
 package main;
 
-import business.dwd.DwdSplitCDC;
+import business.dwd.DwdDbSplitCDC;
 
 /**
  * @Author xiefeng
@@ -12,7 +12,7 @@ public class FlinkEntryPointStreamDWDFromCDC {
 
         System.out.println("--------------Flink application start!---------");
         try {
-            new DwdSplitCDC().apply();
+            new DwdDbSplitCDC().apply();
         } catch (Exception e) {
             e.printStackTrace();
         }

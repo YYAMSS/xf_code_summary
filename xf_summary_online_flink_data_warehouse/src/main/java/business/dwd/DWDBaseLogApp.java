@@ -28,11 +28,15 @@ public class DWDBaseLogApp extends FlinkAbstractBase {
 
     @Override
     protected void transformation() throws Exception {
+        //TODO 添加数据源
         FlinkKafkaConsumer<String> flinkKafkaConsumer = MyKafkaUtil.getFlinkKafkaConsumer(GlobalContext.ODS_BASE_LOG, GlobalContext.GROUP_ID);
         DataStreamSource<String> logStreamSource = this.env.addSource(flinkKafkaConsumer);
 
+        //TODO 指定脏数据的测输出流
         OutputTag<String> dirty = new OutputTag<String>("DirtyData") {
         };
+
+        //TODO 过滤数据
         SingleOutputStreamOperator<JSONObject> jsonObjDS = logStreamSource.process(new ProcessFunction<String, JSONObject>() {
             @Override
             public void processElement(String value, Context ctx, Collector<JSONObject> out) throws Exception {
@@ -78,12 +82,15 @@ public class DWDBaseLogApp extends FlinkAbstractBase {
                     }
                 });
 
+        //TODO 指定启动日志的测输出流
         OutputTag<String> startOutPutTag = new OutputTag<String>("Start") {
         };
 
+        //TODO 指定曝光日志的测输出流
         OutputTag<String> displayOutPutTag = new OutputTag<String>("display") {
         };
 
+        //TODO 使用测输出流将启动、曝光、页面数据分流
         SingleOutputStreamOperator<String> pageDS = jsonObjWithNewFlag.process(new ProcessFunction<JSONObject, String>() {
             @Override
             public void processElement(JSONObject value, Context ctx, Collector<String> out) throws Exception {
@@ -121,12 +128,12 @@ public class DWDBaseLogApp extends FlinkAbstractBase {
             }
         });
 
-        //测试
+        //todo 测试
         jsonObjDS.getSideOutput(dirty).print("dirty<<<<<<<<<<<<");
         pageDS.getSideOutput(startOutPutTag).print("start<<<<<<<<");
         pageDS.getSideOutput(displayOutPutTag).print("display<<<<<<<<<<<");
 
-        //3个测输出流+1主流，分别发往kafka;
+        //TODO 3个测输出流+1主流，分别发往kafka;
         pageDS.addSink(MyKafkaUtil.getFlinkKafkaProducer(GlobalContext.DWD_PAGE_LOG));
         jsonObjDS.getSideOutput(dirty).addSink(MyKafkaUtil.getFlinkKafkaProducer(GlobalContext.DWD_DIRTY_LOG));
         pageDS.getSideOutput(startOutPutTag).addSink(MyKafkaUtil.getFlinkKafkaProducer(GlobalContext.DWD_START_LOG));

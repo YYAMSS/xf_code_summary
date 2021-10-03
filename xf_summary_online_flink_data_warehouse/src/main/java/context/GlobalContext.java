@@ -28,6 +28,8 @@ public class GlobalContext {
     public static final String DWD_START_LOG = "dwd_start_log";
     public static final String DWD_DISPLAY_LOG = "dwd_display_log";
     public static final String DWD_DIRTY_LOG = "dwd_dirty_log";
+    public static final String DWM_UNIQUE_VISIT = "dwm_unique_visit";
+    public static final String DWM_USER_JUMP_DETAIL = "dwm_user_jump_detail";
 
 
 
