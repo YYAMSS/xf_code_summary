@@ -30,7 +30,10 @@ public class GlobalContext {
     public static final String DWD_DIRTY_LOG = "dwd_dirty_log";
     public static final String DWM_UNIQUE_VISIT = "dwm_unique_visit";
     public static final String DWM_USER_JUMP_DETAIL = "dwm_user_jump_detail";
-
+    public static final String DWD_CART_INFO = "dwd_cart_info";
+    public static final String DWD_FAVOR_INFO = "dwd_favor_info";
+    public static final String DWD_ORDER_REFUND_INFO = "dwd_order_refund_info";
+    public static final String DWD_COMMENT_INFO = "dwd_comment_info";
 
 
     //Mysql相关
@@ -46,6 +49,11 @@ public class GlobalContext {
     public static final String PHOENIX_DRIVER = "org.apache.phoenix.jdbc.PhoenixDriver";
     //Phoenix连接参数
     public static final String PHOENIX_SERVER = "jdbc:phoenix:hadoop102,hadoop103,hadoop104:2181";
+
+    //ClickHouse相关
+    public static final String CLICKHOUSE_DRIVER = "ru.yandex.clickhouse.ClickHouseDriver";
+    public static final String CLICKHOUSE_URL = "jdbc:clickhouse://hadoop102:8123/default";
+
 
 
 }

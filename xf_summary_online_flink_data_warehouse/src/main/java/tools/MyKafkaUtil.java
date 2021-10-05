@@ -37,7 +37,11 @@ public class MyKafkaUtil {
         return new FlinkKafkaProducer<String>(topic,new SimpleStringSchema(),properties);
 
     }
-
+    /**
+     * 获取生产者对象
+     *
+     * @param topic 主题
+     */
     public static <T> FlinkKafkaProducer<T> getkafkaSinkBySchema(KafkaSerializationSchema<T> kafkaSerializationSchema) {
         properties.setProperty(ProducerConfig.TRANSACTION_TIMEOUT_CONFIG,5 * 60 * 1000 + "");
         return new FlinkKafkaProducer<T>("kafka_default_topic",
@@ -45,11 +49,26 @@ public class MyKafkaUtil {
                 properties,
                 FlinkKafkaProducer.Semantic.EXACTLY_ONCE);
     }
-
+    /**
+     * 获取消费者对象
+     *
+     * @param topic   主题
+     * @param groupId 消费者组
+     */
 
     public static FlinkKafkaConsumer<String> getFlinkKafkaConsumer(String topic, String groupId) {
         properties.setProperty(GlobalContext.KAFKA_GROUP_ID,groupId);
         return new FlinkKafkaConsumer<String>(topic,new SimpleStringSchema(),properties);
+    }
+
+    //拼接Kafka相关属性到DDL
+    public static String getKafkaDDL(String topic, String groupId) {
+        return "'connector' = 'kafka', " +
+                " 'topic' = '" + topic + "'," +
+                " 'properties.bootstrap.servers' = 'hadoop102:9092', " +
+                " 'properties.group.id' = '" + groupId + "', " +
+                "  'format' = 'json', " +
+                "  'scan.startup.mode' = 'latest-offset'";
     }
 }
 
