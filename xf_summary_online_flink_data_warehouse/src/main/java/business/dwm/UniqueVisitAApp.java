@@ -25,6 +25,11 @@ import java.text.SimpleDateFormat;
  * @DATA 2021/10/3 12:10
  * @Version 1.0
  */
+
+/**
+ * 1、接入页面数据流
+ * 2、用状态编程的方式进行过滤，方便后续统计UV
+ * */
 public class UniqueVisitAApp extends FlinkAbstractBase {
 
     @Override
