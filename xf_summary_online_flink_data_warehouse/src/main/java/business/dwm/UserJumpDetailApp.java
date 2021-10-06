@@ -28,9 +28,15 @@ import java.util.Map;
  * @Version 1.0
  */
 
-/*
+/**
 * 跳出就是用户成功访问了网站的一个页面后就退出，不在继续访问网站的其它页面。
 * 而跳出率就是用跳出次数除以访问次数。
+ *
+ * 1、接入页面数据流 （设置不同的GroupID）
+ * 2、定义跳出规则，用FlinkCEP的方式从流中提取相应的数据；
+ * 3、按规则（匹配上  和  超时的数据）为跳出数据；
+ * 4、最后将匹配上的和跳出的数据进行合并输出到kafka（跳出主题）;
+ *
 * */
 public class UserJumpDetailApp extends FlinkAbstractBase {
     @Override
