@@ -30,6 +30,15 @@ import java.util.Date;
  * @DATA 2021/10/4 13:25
  * @Version 1.0
  */
+
+/**
+ * 1、接入page、uv、uj 主题；
+ * 2、重新设置消费者组；
+ * 3、page主题用于求PV、UV主题用于求uv、uj主题用于求跳出数据；
+ * 4、将各个流转化为相同的数据格式，最后再union在一起；
+ * 5、最后再进行分组、开窗、聚合；
+ * 6、最终再输出到CK;
+ * */
 public class VisitorStatsApp extends FlinkAbstractBase {
     @Override
     protected void transformation() throws Exception {
@@ -127,7 +136,7 @@ public class VisitorStatsApp extends FlinkAbstractBase {
             }
         });
 
-        //TODO 聚合
+        //TODO 开窗、聚合
         SingleOutputStreamOperator<VisitorStats> result = keyedStream.window(TumblingEventTimeWindows.of(Time.seconds(10)))
                 .reduce(new ReduceFunction<VisitorStats>() {
                     @Override
