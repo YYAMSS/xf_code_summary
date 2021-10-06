@@ -35,7 +35,7 @@ public class UniqueVisitAApp extends FlinkAbstractBase {
     @Override
     protected void transformation() throws Exception {
 
-        //TODO 获取数据流
+        //TODO 添加数据源、更换新的groupID
         FlinkKafkaConsumer<String> flinkKafkaConsumer = MyKafkaUtil.getFlinkKafkaConsumer(GlobalContext.DWD_PAGE_LOG, GlobalContext.GROUP_ID);
         DataStreamSource<String> dataStreamSource = this.env.addSource(flinkKafkaConsumer);
 

@@ -34,7 +34,7 @@ public class DWDBaseLogApp extends FlinkAbstractBase {
 
     @Override
     protected void transformation() throws Exception {
-        //TODO 添加数据源
+        //TODO 添加数据源、更换新的groupID
         FlinkKafkaConsumer<String> flinkKafkaConsumer = MyKafkaUtil.getFlinkKafkaConsumer(GlobalContext.ODS_BASE_LOG, GlobalContext.GROUP_ID);
         DataStreamSource<String> logStreamSource = this.env.addSource(flinkKafkaConsumer);
 

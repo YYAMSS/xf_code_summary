@@ -42,7 +42,7 @@ import java.util.Date;
 public class VisitorStatsApp extends FlinkAbstractBase {
     @Override
     protected void transformation() throws Exception {
-        //接入数据源
+        //TODO 添加数据源、更换新的groupID
         DataStreamSource<String> pageDS = this.env.addSource(MyKafkaUtil.getFlinkKafkaConsumer(GlobalContext.DWD_PAGE_LOG, GlobalContext.GROUP_ID));
         DataStreamSource<String> uvDS = this.env.addSource(MyKafkaUtil.getFlinkKafkaConsumer(GlobalContext.DWM_UNIQUE_VISIT, GlobalContext.GROUP_ID));
         DataStreamSource<String> ujDS = this.env.addSource(MyKafkaUtil.getFlinkKafkaConsumer(GlobalContext.DWM_USER_JUMP_DETAIL, GlobalContext.GROUP_ID));

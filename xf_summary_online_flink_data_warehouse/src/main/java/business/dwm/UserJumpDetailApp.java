@@ -41,7 +41,7 @@ import java.util.Map;
 public class UserJumpDetailApp extends FlinkAbstractBase {
     @Override
     protected void transformation() throws Exception {
-        //TODO 接入数据源
+        //TODO 添加数据源、更换新的groupID
         DataStreamSource<String> kafkaDS = this.env.addSource(MyKafkaUtil.getFlinkKafkaConsumer(GlobalContext.DWD_PAGE_LOG, GlobalContext.GROUP_ID));
         //TODO 将数据转换为JSON对象
         SingleOutputStreamOperator<JSONObject> mapDS = kafkaDS.map(JSON::parseObject);
