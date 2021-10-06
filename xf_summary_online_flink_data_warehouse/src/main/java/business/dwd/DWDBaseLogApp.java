@@ -24,6 +24,12 @@ import tools.MyKafkaUtil;
  * @DATA 2021/9/23 18:03
  * @Version 1.0
  */
+
+/**
+* 1、从ods层接入数据；
+* 2、按照脏数据、启动、曝光、页面进行分流；
+* 3、新老用户校验，方便后续统计新老用户数量；
+**/
 public class DWDBaseLogApp extends FlinkAbstractBase {
 
     @Override
