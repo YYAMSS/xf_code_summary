@@ -37,6 +37,15 @@ import java.util.Comparator;
  *  在之前的需求实现中，已经统计的广告的点击次数总和，但是没有实现窗口操作，并且也未增加排名处理。
  * 	这次添加窗口, 并增加排名
  * */
+
+/**
+ * TODO 1、设置水位线；
+ *      2、按照省份、广告ID分组、开窗、聚合；
+ *      3、将迟到数据输出到测输出流中；
+ *      4、再根据窗口结束时间进行分组；
+ *      5、process进行排序操作：设置两个状态值，valueState、ListState;
+ *      6、取出TOPN；
+ * */
 public class Flink_Project_AdsClick {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
