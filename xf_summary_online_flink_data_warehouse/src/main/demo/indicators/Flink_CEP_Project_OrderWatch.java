@@ -31,6 +31,12 @@ import java.util.Map;
 *todo 订单支付实时监控
 * */
 
+/**
+ * TODO 1、设置水位线，按照orderID分组；
+ *      2、定义CEP模式,提取 创建订单+支付订单的 订单；
+ *      3、select出符合条件的数据 和 超时数据；
+ * */
+
 public class Flink_CEP_Project_OrderWatch {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
