@@ -27,6 +27,18 @@ import java.util.ArrayList;
  * 	输出相关的信息进行报警提示。这是电商网站、也是几乎所有网站风控的基本一环。
  * */
 
+/**
+ * TODO 1、设置水位线、map转化数据、按照userID分组；
+ *      2、设置状态：用来保存失败登录的时间戳；
+ *
+ *                              统计连续失败的次数:
+ *                             1. 把失败的时间戳放入到List中,
+ *                             2. 当List中的长度到达2的时候, 判断这个两个时间戳的差是否小于等于2s
+ *                             3. 如果是, 则这个用户在恶意登录
+ *                             4. 否则不是, 然后删除List的第一个元素用于保持List的长度为2
+ *                             6. 如果出现登录成功, 则需要清空List集合, 重新开始计算
+ * */
+
 public class Flink_Project_Login {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
