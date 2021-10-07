@@ -24,6 +24,12 @@ import java.util.Map;
 /**
  * todo 恶意登录监控
  * */
+/**
+ * TODO 1、设置水位线，并按照userid分组；
+ *      2、定义CEP模式，并从流中提取数据；
+ *      3、选择出失败的数据；
+ *
+ * */
 public class Flink_CEP_Project_Login {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
