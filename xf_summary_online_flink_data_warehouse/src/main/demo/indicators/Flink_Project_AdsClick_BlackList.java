@@ -29,6 +29,15 @@ import java.time.*;
  * 	1. 告警: 使用侧输出流
  * 	2. 已经进入黑名单的用户的广告点击记录不再进行统计
  * */
+/**
+ * TODO 1、设置水位线；
+ *      2、根据用户ID、广告ID分组；
+ *      3、利用process进行黑名单过滤操作：
+ *      4、利用状态，设置状态失效时间为每天00:00:00;
+ *      5、如果是新key,则将状态更新为1L，而后每来一次 +1， 如果大约99次，则报警（利用侧输出流，输出报警信息）
+ *      6、定时器的作用是：定期的更新状态；
+ * */
+
 public class Flink_Project_AdsClick_BlackList {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
